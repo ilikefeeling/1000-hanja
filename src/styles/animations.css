@@ -1,0 +1,267 @@
+/* ============================================
+   천자문 앱 — Animations
+   ============================================ */
+
+/* --- Page Transitions --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* --- Ink Splash Effect --- */
+@keyframes inkSplash {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.ink-splash {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color-ink) 0%, transparent 70%);
+  animation: inkSplash 600ms ease-out forwards;
+  pointer-events: none;
+}
+
+/* --- Gold Shimmer --- */
+@keyframes goldShimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.shimmer-gold {
+  background: linear-gradient(
+    90deg,
+    var(--color-gold-dark) 0%,
+    var(--color-gold-light) 50%,
+    var(--color-gold-dark) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldShimmer 3s ease-in-out infinite;
+}
+
+/* --- Brush Stroke Reveal --- */
+@keyframes brushReveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.brush-reveal {
+  animation: brushReveal 800ms ease-out forwards;
+}
+
+/* --- Pulse --- */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* --- Scale Pop --- */
+@keyframes scalePop {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.scale-pop {
+  animation: scalePop 400ms var(--transition-spring) forwards;
+}
+
+/* --- Stagger Children --- */
+.stagger-children > * {
+  opacity: 0;
+  animation: fadeInUp 400ms ease-out forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 60ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 120ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 180ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 240ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 300ms; }
+.stagger-children > *:nth-child(7) { animation-delay: 360ms; }
+.stagger-children > *:nth-child(8) { animation-delay: 420ms; }
+
+/* --- Quiz Feedback --- */
+@keyframes correctShake {
+  0%, 100% { transform: translateX(0); }
+  10% { transform: translateX(-4px); }
+  20% { transform: translateX(4px); }
+  30% { transform: translateX(-4px); }
+  40% { transform: translateX(4px); }
+  50% { transform: translateX(0); }
+}
+
+@keyframes correctPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(45, 143, 94, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(45, 143, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(45, 143, 94, 0);
+  }
+}
+
+@keyframes incorrectShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+.anim-correct {
+  animation: correctPulse 600ms ease-out;
+}
+
+.anim-incorrect {
+  animation: incorrectShake 400ms ease-out;
+}
+
+/* --- Floating Effect --- */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* --- Calligraphy Morph (Cursive transition) --- */
+@keyframes morphToCursive {
+  0% {
+    font-style: normal;
+    letter-spacing: 0;
+    opacity: 1;
+    filter: blur(0);
+  }
+  40% {
+    opacity: 0.6;
+    filter: blur(2px);
+  }
+  60% {
+    font-style: italic;
+    letter-spacing: -0.05em;
+    opacity: 0.6;
+    filter: blur(2px);
+  }
+  100% {
+    font-style: italic;
+    letter-spacing: -0.03em;
+    opacity: 0.85;
+    filter: blur(0);
+  }
+}
+
+.morph-to-cursive {
+  animation: morphToCursive 1.2s ease-in-out forwards;
+}
+
+/* --- Counter Animation --- */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.count-up {
+  animation: countUp 600ms ease-out forwards;
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
